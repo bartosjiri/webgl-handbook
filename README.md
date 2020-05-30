@@ -1,4 +1,4 @@
-# WebGL Playground
+# WebGL Handbook
 
 A collection of notes, resources, experiments and mini-projects documenting my experience of learning WebGL from a scratch. 
 
