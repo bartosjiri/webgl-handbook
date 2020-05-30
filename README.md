@@ -5,7 +5,7 @@ A collection of notes, resources, experiments and mini-projects documenting my e
 ## Content
 | # | Title | Description | Resources
 | :--- | :--- | :--- | :--- | 
-| [001](001_hello-world) | Hello World | Learning about what WebGL is, understanding basics of how it works and creating my first shaders. | [R001](#references) |
+| [001](001_hello-world) | Hello World | Learning about what WebGL is, understanding basics of how it works and creating my first shaders. | [R001](#resources) |
 
 
 ## Resources
