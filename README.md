@@ -6,7 +6,7 @@ A collection of notes, resources, code snippets, experiments and mini-projects d
 ## Content
 | # | Title | Description | Resources
 | :--- | :--- | :--- | :--- | 
-| [001](001_webgl-introduction) | WebGL introduction | Learning about what WebGL is, understanding basics of how it works and creating first program. | [R001](#resources) |
+| [001](001_webgl-introduction) | WebGL introduction | Learning about what WebGL is, understanding basics of how it works and creating first program. | [R001](#resources), [R002](#resources), [R003](#resources) |
 
 
 ## Resources
@@ -21,3 +21,6 @@ List of learning resources I have used:
 [R001]: https://webgl2fundamentals.org
 [R002]: https://www.khronos.org/webgl/wiki
 [R003]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
+
+## Disclaimer
+Some contents of this repository are a compilation of material from various publicly available sources. All such information and/or images may be copyrighted by their respective owners. Credit and link to the original content is always provided at the bottom of each section. If you find any uncited content or other discrepancy, please feel free to open an issue.
