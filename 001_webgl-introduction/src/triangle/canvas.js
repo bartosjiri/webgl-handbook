@@ -46,7 +46,7 @@ const createProgram = (gl, vertexShader, fragmentShader) => {
 
 const main = () => {
   // Get WebGL context
-  const canvas = document.querySelector("canvas");
+  const canvas = document.getElementById("canvas");
   const gl = canvas.getContext("webgl2");
   if (!gl) {
     return;
@@ -121,8 +121,8 @@ const main = () => {
   // --> 3) set both to last 2 values
   const primitiveType = gl.TRIANGLES;
   const execOffset = 0;
-  const count = 3;
-  gl.drawArrays(primitiveType, execOffset, count);
+  const execCount = 3;
+  gl.drawArrays(primitiveType, execOffset, execCount);
 };
 
 main();

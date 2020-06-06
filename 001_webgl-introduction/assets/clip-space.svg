@@ -1,0 +1,96 @@
+<svg width="533" height="411" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="413" width="535" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <polygon id="svg_1" points="119.9,128.3 134.7,348.6 357.2,357.8 417.7,245.8 413.2,54.9 220.9,54.9 " fill="#F4F4F4"/>
+  <g id="Axes">
+   <polygon id="svg_2" points="280.7,103.3 274.2,97.8 267.7,103.3 274.2,89.2  " fill="#00CE00"/>
+   <polygon id="svg_3" points="371.8,201.6 377.2,195.1 371.8,188.5 385.9,195.1  " fill="#A50000"/>
+   <polygon id="svg_4" points="312.7,165.8 307.1,163 297.8,165 310.5,158.6  " fill="#0A00EC"/>
+   <line id="svg_5" y2="162.7" x2="306.8" y1="193.5" x1="278.7" stroke-miterlimit="10" stroke-linecap="round" stroke-width="4" stroke="#0A00EC" fill="none"/>
+   <line id="svg_6" y2="97.7" x2="274.2" y1="193.5" x1="278.8" stroke-miterlimit="10" stroke-linecap="round" stroke-width="4" stroke="#00CE00" fill="none"/>
+   <line id="svg_7" y2="195.2" x2="378.5" y1="193.5" x1="278.7" stroke-miterlimit="10" stroke-linecap="round" stroke-width="4" stroke="#A50000" fill="none"/>
+  </g>
+  <g id="Coordinates">
+   <text id="svg_8" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 258.6963 205.3932)">(0,0,0)</text>
+   <text id="svg_9" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 396.863 48.5599)">(1,1,1)</text>
+   <text id="svg_10" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 102.86 364.0599)">(-1,-1,-1)</text>
+   <text id="svg_11" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 329.1943 370.0599)">(1,-1,-1)</text>
+   <text id="svg_12" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 417.1953 257.0599)">(1,-1,1)</text>
+   <text id="svg_13" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 229.1943 255.0599)">(-1,-1,1)</text>
+   <text id="svg_14" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 193.5286 48.7266)">(-1,1,1)</text>
+   <text id="svg_15" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 60.5277 130.0599)">(-1,1,-1)</text>
+   <text id="svg_16" font-size="10" font-family="'CourierNewPSMT'" transform="matrix(1 0 0 1 355.1953 139.0599)">(1,1,-1)</text>
+  </g>
+  <g id="Arrow_3"/>
+  <g opacity="0.2" id="Interior_Wireframe">
+   <polygon id="svg_17" points="189,287 389,293 383.7,89.7 175,88  " stroke-miterlimit="10" stroke-width="0.75" stroke="#6D6D6D" fill="none"/>
+   <polygon id="svg_18" points="244,351.5 233.5,129.5 307.5,55.5    313,243  " stroke-miterlimit="10" stroke-width="0.75" stroke="#6D6D6D" fill="none"/>
+   <polygon id="svg_19" points="127.5,235.6 352,238.5 415,159.5    226.3,157.7  " stroke-miterlimit="10" stroke-width="0.75" stroke="#6D6D6D" fill="none"/>
+   <line id="svg_20" y2="158.5" x2="310.5" y1="236.5" x1="238" stroke-miterlimit="10" stroke-width="0.75" stroke="#6D6D6D" fill="none"/>
+   <line id="svg_21" y2="195" x2="386" y1="192" x1="182" stroke-miterlimit="10" stroke-width="0.75" stroke="#6D6D6D" fill="none"/>
+   <line id="svg_22" y2="88.8" x2="274" y1="289.8" x1="283.3" stroke-miterlimit="10" stroke-width="0.75" stroke="#6D6D6D" fill="none"/>
+  </g>
+  <g id="Exterior_Wireframe">
+   <g id="svg_23">
+    <g id="svg_24">
+     <defs>
+      <polygon points="413.2,54.9 417.7,245.8 230.4,241.3 220.9,54.9     " id="SVGID_1_"/>
+     </defs>
+     <clipPath id="SVGID_2_">
+      <use id="svg_25" xlink:href="#SVGID_1_"/>
+     </clipPath>
+     <polygon id="svg_26" points="413.2,54.9      417.7,245.8 230.4,241.3 220.9,54.9    " stroke-miterlimit="10" stroke-width="3" stroke="#000000" fill="none" clip-path="url(#SVGID_2_)"/>
+    </g>
+    <g id="svg_27">
+     <defs>
+      <polygon points="349.7,130.5 357.2,357.8 134.4,349.3 119.9,128.3     " id="SVGID_3_"/>
+     </defs>
+     <clipPath id="SVGID_4_">
+      <use id="svg_28" xlink:href="#SVGID_3_"/>
+     </clipPath>
+     <polygon id="svg_29" points="349.7,130.5      357.2,357.8 134.4,349.3 119.9,128.3    " stroke-miterlimit="10" stroke-width="3" stroke="#000000" fill="none" clip-path="url(#SVGID_4_)"/>
+    </g>
+    <g id="svg_30">
+     <defs>
+      <polygon points="349.7,130.5 413.2,54.9 417.7,245.8 357.2,357.8     " id="SVGID_5_"/>
+     </defs>
+     <clipPath id="SVGID_6_">
+      <use id="svg_31" xlink:href="#SVGID_5_"/>
+     </clipPath>
+     <polygon id="svg_32" points="349.7,130.5      413.2,54.9 417.7,245.8 357.2,357.8    " stroke-miterlimit="10" stroke-width="3" stroke="#000000" fill="none" clip-path="url(#SVGID_6_)"/>
+    </g>
+    <g id="svg_33">
+     <defs>
+      <polygon points="357.2,357.8 134.4,349.3 230.4,241.3 417.7,245.8     " id="SVGID_7_"/>
+     </defs>
+     <clipPath id="SVGID_8_">
+      <use id="svg_34" xlink:href="#SVGID_7_"/>
+     </clipPath>
+     <polygon id="svg_35" points="357.2,357.8      134.4,349.3 230.4,241.3 417.7,245.8    " stroke-miterlimit="10" stroke-width="3" stroke="#000000" fill="none" clip-path="url(#SVGID_8_)"/>
+    </g>
+    <g id="svg_36">
+     <defs>
+      <polygon points="134.4,349.3 119.9,128.3 220.9,54.9 230.4,241.3     " id="SVGID_9_"/>
+     </defs>
+     <clipPath id="SVGID_10_">
+      <use id="svg_37" xlink:href="#SVGID_9_"/>
+     </clipPath>
+     <polygon id="svg_38" points="     134.4,349.3 119.9,128.3 220.9,54.9 230.4,241.3    " stroke-miterlimit="10" stroke-width="3" stroke="#000000" fill="none" clip-path="url(#SVGID_10_)"/>
+    </g>
+    <g id="svg_39">
+     <defs>
+      <polygon points="119.9,128.3 220.9,54.9 413.2,54.9 349.7,130.5     " id="SVGID_11_"/>
+     </defs>
+     <clipPath id="SVGID_12_">
+      <use id="svg_40" xlink:href="#SVGID_11_"/>
+     </clipPath>
+     <polygon id="svg_41" points="     119.9,128.3 220.9,54.9 413.2,54.9 349.7,130.5    " stroke-miterlimit="10" stroke-width="3" stroke="#000000" fill="none" clip-path="url(#SVGID_12_)"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>
