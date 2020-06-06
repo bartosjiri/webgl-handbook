@@ -6,8 +6,8 @@ Essentially, the code provided to run on a GPU needs to be supplied through a pr
 
 The view projection of WebGL's result is compressed down into a 2D space and rasterized into an interactive image object. This object is based in a clip space, a special coordinate system in which GPU computes all transformations. The clip space coordinates always range from -1 to +1 independently on size of the canvas.
 
-![Clip space visualization](./assets/clip-space.svg)
-
+> ![Clip space visualization](./assets/clip-space.svg)
+>
 > ***Clip space***
 >
 > *Source: MDN Web Docs ([link][R003])*
@@ -178,8 +178,8 @@ To get a better understanding and demonstrate all previously mentioned concepts 
 
 Finally we get our tringle. The whole source code can be found in [`src/triangle`](src/triangle) folder or viewed live on [Codepen](https://codepen.io/bartosjiri/pen/ExVqowj).
 
-![WebGL triangle example](./assets/triangle.png)
-
+> ![WebGL triangle example](./assets/triangle.png)
+>
 > ***WebGL triangle example***
 >
 > *Source: WebGL2 Fundamentals ([link][R001])*
