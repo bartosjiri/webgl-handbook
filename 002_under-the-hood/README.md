@@ -19,7 +19,7 @@ The process of generating an WebGL image is following:
 >
 > *Source: Luz Caballero ([link][R002])*
 
-We are starting with our data created in JavaScript in one or more ways. These can be 3D model files, procedurally created data or instructions used through libraries. All of this is put into vertex arrays that contain vertex attributes like the location of the vertex in space and information about texture, color and lighting features (vertex normal). Such vertex arrays are sent to GPU in a set of vertex buffers.
+We are starting with our data created in JavaScript in one or more ways. It can be a 3D model file, procedurally created data or instructions used through libraries. All of these include model vertices defining location, normal vectors defining direction, and color data. This is put into vertex arrays that contain vertex attributes like the location of the vertex in space and information about texture, color and lighting features (vertex normal). Such vertex arrays are sent to GPU in a set of vertex buffers.
 
 Once inside the GPU, it selects each vertex out of the vertex buffer and runs it through the vertex shader. As a result we receive a mesh coordinates. Usually, the process performed on the vertex shader looks similar to this:
 
@@ -32,13 +32,17 @@ Once inside the GPU, it selects each vertex out of the vertex buffer and runs it
   - `MODEL_MATRIX`: a 4x4 matrix which transforms object-space coordinates (= coordinates before translations) into world-space coordinates 
   - `VERTEX_POSITION`: a 4D vector (x, y, z, w)
 
-As `gl_Position` provides clip coordinates, WebGL will divide the result by `gl_Position.w`, producing normalized device coordinates. These coordinates are then translated into space coordinates to connect verteces and display individual pixels in specified viewport.
+As `gl_Position` provides clip coordinates, WebGL will divide the result by `gl_Position.w`, producing normalized device coordinates. These coordinates are then translated into space coordinates to connect verteces and display individual pixels in specified viewport. In other words, the 3D world is being projected onto a 2D viewing screen. As last step for the vertex shader, everything that is not in the camera's field of view is clipped away.
 
-The generated pixel-sized fragments are then passed through the fragment shader. The shader is called for each individual pixel to calculate its actual color and depth values. This can be done in various ways, ranging from hard-coding a specific color, through color interpolation and texture lookups, to more advanced mappings.
+The generated object coordinates are mapped into pixel-sized fragments and passed through the fragment shader. The shader is called for each individual pixel to calculate its actual color and depth values. This can be done in various ways, ranging from hard-coding a specific color, through color interpolation and texture lookups, to more advanced mappings.
 
-> `@TODO: Fragment shader image explanation`
+> ![Fragment shader](./assets/fragment-shader.gif)
+>
+> ***Fragment shader & color interpolation***
+>
+> *Source: WebGL2 Fundamentals ([link][R001])*
 
-These values are put into the framebuffer. This is where pixels are filtered by their depth, meaning that depth of pixels relative to the camera is compared and all pixels that are hidden behind others will be discarded. Finally, as a result of all of this, the complete view can be drawn.
+These values are put into the framebuffer. This is where pixels are filtered by their depth, meaning that depth of pixels relative to the camera is compared and all pixels that are hidden behind others will be either combined or discarded. Finally, as a result of all of this, the complete view can be drawn.
 
 ---
 
@@ -49,10 +53,12 @@ These values are put into the framebuffer. This is where pixels are filtered by 
 | An Introduction to WebGL — Part 1 | [Luz Caballero](https://dev.opera.com/authors/luz-caballero/) | [Link][R002] |
 | How WebGL works? | [sinisterchipmunk](https://stackoverflow.com/users/367371/sinisterchipmunk) | [Link][R003] |
 | An intro to modern OpenGL. Chapter 1: The Graphics Pipeline | [Joe Groff](https://twitter.com/jckarter/) | [Link][R004] |
+| 3D Computer Graphics - What and How | [Dr. Wayne Brown](http://learnwebgl.brown37.net/acknowledgements/author.html) | [Link][R005] |
 
 
 [R001]: https://webgl2fundamentals.org/webgl/lessons/webgl-how-it-works.html
 [R002]: https://dev.opera.com/articles/introduction-to-webgl-part-1/
 [R003]: https://stackoverflow.com/a/7374194
 [R004]: http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Chapter-1:-The-Graphics-Pipeline.html
+[R005]: http://learnwebgl.brown37.net/the_big_picture/3d_rendering.html
 
