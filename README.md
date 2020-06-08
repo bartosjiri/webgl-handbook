@@ -15,20 +15,28 @@ List of learning resources I have used:
 
 | # | Title | Author | Link |
 | :---   | :---   | :---  | :---  |
-| R001 | WebGL2 Fundamentals | [Greggman](https://github.com/greggman) | [Link][R001] |
-| R002 | WebGL public wiki | [Khronos](https://khronos.org) | [Link][R002] |
-| R003 | WebGL: 2D and 3D graphics for the web | [MDN Web Docs](https://developer.mozilla.org) | [Link][R003]
-| R004 | An Introduction to WebGL | [Luz Caballero](https://dev.opera.com/authors/luz-caballero/) | [Link][R004] |
-| R005 | An intro to modern OpenGL | [Joe Groff](https://twitter.com/jckarter/) | [Link][R005] |
-| R006 | Learn WebGL | [Dr. Wayne Brown](http://learnwebgl.brown37.net/acknowledgements/author.html) | [Link][R006] |
+| R001 | WebGL2 Fundamentals | [Greggman][A001] | [Link][R001] |
+| R002 | WebGL public wiki | [Khronos][A002] | [Link][R002] |
+| R003 | WebGL: 2D and 3D graphics for the web | [MDN Web Docs][A003] | [Link][R003]
+| R004 | An Introduction to WebGL | [Luz Caballero][A004] | [Link][R004] |
+| R005 | An intro to modern OpenGL | [Joe Groff][A005] | [Link][R005] |
+| R006 | Learn WebGL | [Dr. Wayne Brown][A006] | [Link][R006] |
  
-
-[R001]: https://webgl2fundamentals.org
-[R002]: https://www.khronos.org/webgl/wiki
-[R003]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
-[R004]: https://dev.opera.com/authors/luz-caballero/
-[R005]: http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Table-of-Contents.html
-[R006]: http://learnwebgl.brown37.net/index.html
 
 ## Disclaimer
 Some contents of this repository are a compilation of material from various publicly available sources. All such information and/or images may be copyrighted by their respective owners. Credit and link to the original content is always provided at the bottom of each section. If you find any uncited content or other discrepancy, please feel free to open an issue.
+
+
+<!-- Resource links -->
+[R001]: https://webgl2fundamentals.org (WebGL2 Fundamentals)
+[A001]: https://github.com/greggman (Greggman)
+[R002]: https://www.khronos.org/webgl/wiki (WebGL public wiki)
+[A002]: https://khronos.org (Khronos)
+[R003]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API (WebGL: 2D and 3D graphics for the web)
+[A003]: https://developer.mozilla.org (MDN Web Docs)
+[R004]: https://dev.opera.com/authors/luz-caballero/ (An Introduction to WebGL)
+[A004]: https://dev.opera.com/authors/luz-caballero/ (Luz Caballero)
+[R005]: http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Table-of-Contents.html (An intro to modern OpenGL)
+[A005]: https://twitter.com/jckarter/ (Joe Groff)
+[R006]: http://learnwebgl.brown37.net/index.html (Learn WebGL)
+[A006]: http://learnwebgl.brown37.net/acknowledgements/author.html (Dr. Wayne Brown)

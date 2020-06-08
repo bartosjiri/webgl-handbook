@@ -186,17 +186,20 @@ Finally we get our tringle. The whole source code can be found in [`src/triangle
 
 As demonstrated, quite a lot of code is required in order to draw a single shape. It can seem complicated because of a vertex and fragment shader, however these run on the GPU which is also where all the speed comes from. Fortunately, compiling and linking shaders is most of the time same in every WebGL program and therefore a boilerplate code can be used. There is also plenty of [frameworks and libraries](https://gist.github.com/dmnsgn/76878ba6903cf15789b712464875cfdc).
 
-
 ---
 
 ## Resources
 | Title | Author | Link |
 | :---   | :---  | :---  |
-| WebGL2 Fundamentals | [Greggman](https://github.com/greggman) | [Link][R001] |
-| Getting Started | [WebGL Public Wiki](https://www.khronos.org/webgl/wiki/) | [Link][R002] |
-| WebGL model view projection | [MDN Web Docs](https://developer.mozilla.org) | [Link][R003] |
+| WebGL2 Fundamentals | [Greggman][A001] | [Link][R001] |
+| Getting Started | [WebGL Public Wiki][A002] | [Link][R002] |
+| WebGL model view projection | [MDN Web Docs][A003] | [Link][R003] |
 
 
-[R001]: https://webgl2fundamentals.org/webgl/lessons/webgl-fundamentals.html
-[R002]: https://www.khronos.org/webgl/wiki/Getting_Started
-[R003]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_model_view_projection
+<!-- Resource links -->
+[R001]: https://webgl2fundamentals.org/webgl/lessons/webgl-fundamentals.html (WebGL2 Fundamentals)
+[A001]: https://github.com/greggman (Greggman)
+[R002]: https://www.khronos.org/webgl/wiki/Getting_Started (Getting Started)
+[A002]: https://khronos.org (Khronos)
+[R003]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_model_view_projection (WebGL model view projection)
+[A003]: https://developer.mozilla.org (MDN Web Docs)

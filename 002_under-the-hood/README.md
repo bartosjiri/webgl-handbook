@@ -49,16 +49,23 @@ These values are put into the framebuffer. This is where pixels are filtered by 
 ## Resources
 | Title | Author | Link |
 | :---   | :---  | :---  |
-| WebGL How It Works | [Greggman](https://github.com/greggman) | [Link][R001] |
-| An Introduction to WebGL — Part 1 | [Luz Caballero](https://dev.opera.com/authors/luz-caballero/) | [Link][R002] |
-| How WebGL works? | [sinisterchipmunk](https://stackoverflow.com/users/367371/sinisterchipmunk) | [Link][R003] |
-| An intro to modern OpenGL. Chapter 1: The Graphics Pipeline | [Joe Groff](https://twitter.com/jckarter/) | [Link][R004] |
-| 3D Computer Graphics - What and How | [Dr. Wayne Brown](http://learnwebgl.brown37.net/acknowledgements/author.html) | [Link][R005] |
+| WebGL How It Works | [Greggman][A001] | [Link][L001] |
+| An Introduction to WebGL — Part 1 | [Luz Caballero][A004] | [Link][L004] |
+| An intro to modern OpenGL. Chapter 1: The Graphics Pipeline | [Joe Groff][A005] | [Link][L005] |
+| 3D Computer Graphics - What and How | [Dr. Wayne Brown][A006] | [Link][L006] |
+| How WebGL works? | [sinisterchipmunk][E002] | [Link][E001] |
 
 
-[R001]: https://webgl2fundamentals.org/webgl/lessons/webgl-how-it-works.html
-[R002]: https://dev.opera.com/articles/introduction-to-webgl-part-1/
-[R003]: https://stackoverflow.com/a/7374194
-[R004]: http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Chapter-1:-The-Graphics-Pipeline.html
-[R005]: http://learnwebgl.brown37.net/the_big_picture/3d_rendering.html
+<!-- Resource links -->
+[L001]: https://webgl2fundamentals.org/webgl/lessons/webgl-how-it-works.html (WebGL How It Works)
+[A001]: https://github.com/greggman (Greggman)
+[L004]: https://dev.opera.com/articles/introduction-to-webgl-part-1/ (An Introduction to WebGL — Part 1)
+[A004]: https://dev.opera.com/authors/luz-caballero/ (Luz Caballero)
+[L005]: http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Chapter-1:-The-Graphics-Pipeline.html (An intro to modern OpenGL. Chapter 1: The Graphics Pipeline)
+[A005]: https://twitter.com/jckarter/ (Joe Groff)
+[L006]: http://learnwebgl.brown37.net/the_big_picture/3d_rendering.html (3D Computer Graphics - What and How)
+[A006]: http://learnwebgl.brown37.net/acknowledgements/author.html (Dr. Wayne Brown)
 
+<!-- Extra links -->
+[E001]: https://stackoverflow.com/a/7374194 (How WebGL works?)
+[E002]: https://stackoverflow.com/users/367371/sinisterchipmunk (sinisterchipmunk)
