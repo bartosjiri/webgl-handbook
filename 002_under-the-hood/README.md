@@ -17,7 +17,7 @@ The process of generating an WebGL image is following:
 >
 > ***Rendering pipeline***
 >
-> *Source: Luz Caballero ([link][R002])*
+> *Source: Luz Caballero ([link][L004])*
 
 We are starting with our data created in JavaScript in one or more ways. It can be a 3D model file, procedurally created data or instructions used through libraries. All of these include model vertices defining location, normal vectors defining direction, and color data. This is put into vertex arrays that contain vertex attributes like the location of the vertex in space and information about texture, color and lighting features (vertex normal). Such vertex arrays are sent to GPU in a set of vertex buffers.
 
@@ -40,7 +40,7 @@ The generated object coordinates are mapped into pixel-sized fragments and passe
 >
 > ***Fragment shader & color interpolation***
 >
-> *Source: WebGL2 Fundamentals ([link][R001])*
+> *Source: WebGL2 Fundamentals ([link][L001])*
 
 These values are put into the framebuffer. This is where pixels are filtered by their depth, meaning that depth of pixels relative to the camera is compared and all pixels that are hidden behind others will be either combined or discarded. Finally, as a result of all of this, the complete view can be drawn.
 

@@ -10,7 +10,7 @@ The view projection of WebGL's result is compressed down into a 2D space and ras
 >
 > ***Clip space***
 >
-> *Source: MDN Web Docs ([link][R003])*
+> *Source: MDN Web Docs ([link][L003])*
 
 
 To get a better understanding and demonstrate all previously mentioned concepts in practice, let's try creating a simple triangle. This assumes a basic knowledge of HTML, CSS and JavaScript.
@@ -182,7 +182,7 @@ Finally we get our tringle. The whole source code can be found in [`src/triangle
 >
 > ***WebGL triangle example***
 >
-> *Source: WebGL2 Fundamentals ([link][R001])*
+> *Source: WebGL2 Fundamentals ([link][L001])*
 
 As demonstrated, quite a lot of code is required in order to draw a single shape. It can seem complicated because of a vertex and fragment shader, however these run on the GPU which is also where all the speed comes from. Fortunately, compiling and linking shaders is most of the time same in every WebGL program and therefore a boilerplate code can be used. There is also plenty of [frameworks and libraries](https://gist.github.com/dmnsgn/76878ba6903cf15789b712464875cfdc).
 
@@ -191,15 +191,15 @@ As demonstrated, quite a lot of code is required in order to draw a single shape
 ## Resources
 | Title | Author | Link |
 | :---   | :---  | :---  |
-| WebGL2 Fundamentals | [Greggman][A001] | [Link][R001] |
-| Getting Started | [WebGL Public Wiki][A002] | [Link][R002] |
-| WebGL model view projection | [MDN Web Docs][A003] | [Link][R003] |
+| WebGL2 Fundamentals | [Greggman][A001] | [Link][L001] |
+| Getting Started | [WebGL Public Wiki][A002] | [Link][L002] |
+| WebGL model view projection | [MDN Web Docs][A003] | [Link][L003] |
 
 
 <!-- Resource links -->
-[R001]: https://webgl2fundamentals.org/webgl/lessons/webgl-fundamentals.html (WebGL2 Fundamentals)
+[L001]: https://webgl2fundamentals.org/webgl/lessons/webgl-fundamentals.html (WebGL2 Fundamentals)
 [A001]: https://github.com/greggman (Greggman)
-[R002]: https://www.khronos.org/webgl/wiki/Getting_Started (Getting Started)
+[L002]: https://www.khronos.org/webgl/wiki/Getting_Started (Getting Started)
 [A002]: https://khronos.org (Khronos)
-[R003]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_model_view_projection (WebGL model view projection)
+[L003]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_model_view_projection (WebGL model view projection)
 [A003]: https://developer.mozilla.org (MDN Web Docs)
