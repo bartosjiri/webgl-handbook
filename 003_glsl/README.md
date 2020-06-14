@@ -8,9 +8,9 @@ It is also worth mentioning that there are different versions of OpenGL, WebGL a
 
 GLSL is designed to do math that is commonly needed to compute things for rasterizing graphics. It allows for three basic types of data:
 
-  - `bool`: boolean values
-  - `int`: integer values
-  - `float`: floating point values
+  - `bool`: boolean values (true, false)
+  - `int`: integer values, a whole number (0, 1, 10, -5, ...)
+  - `float`: floating point values, a number with at least one decimal (0.0, 0.1, 1.0, -10.8, ...)
 
 GLSL facilitates the manipulation of vectors and matrices. Those are always composed of values of the same basic data type. If the type name starts with `b`, it contains boolean values, if it starts with `i` it contains integer values, if it starts with anything else it contains floating point values. The vector and matrix data types are:
 
@@ -112,6 +112,139 @@ A user can create new data types that contain a combination of values:
     frequencies[1] = 0.67;
     frequencies[2] = 0.82;
     ```
+
+### Vector components
+
+Similar to JavaScript array or objects, an individual element of a vector can be accessed using array `[0]` or dotted `.a` notation. The names of the vector components are usually `x, y, z, w` for geometric data, `r, g, b, a` for color data, and `s, t, p, q` for texture data. The array notation returns a single component while the dotted notation can return a single component or a new vector depending on the number of field names used:
+
+  ```glsl
+  vec3 alpha = vec3(1.0, 2.0, 3.0);
+  vec4 a;
+  vec3 b;
+  vec2 c;
+  float d;
+
+  b = alpha.xyz; // b is now (1.0, 2.0, 3.0)
+  d = alpha[2]; // d is now 3.0
+  a = alpha.xxxx; // a is now (1.0, 1.0, 1.0, 1.0)
+  c = alhpa.zx; // c is now (3.0, 1.0)
+  b = alpha.rgb; // b is now (1.0, 2.0, 3.0)
+  b = alpha.stp; // b is now (1.0, 2.0, 3.0)
+  a = alpha.yy; // error - trying to assign a 2-component vector to a 4-component vector 
+  ```
+
+Using multiple property names to create a new vector is called swizzle notation. Swizzling can also be used on the left-hand side of an assigment, each field name can only be used once in this case though:
+
+  ```glsl
+  alpha.zxy = vec3(3.0, 4.0, 5.0); // alpha is now (4.0, 5.0, 3.0)
+  alpha.zx = vec2(10.0, 20.0); // alpha is now (20.0, 5.0, 10.0)
+  alpha.xx = vec2(10.0, 20.0); // error
+  alpha.xyz = vec2(10.0, 20.0); // error
+  ```
+
+### Data type conversions
+
+You can convert data from one type to another using a conversion a cast, which is a conversion function with the same name as the data type. Since GLSL does not support mixed data types, casting is essential feature:
+
+  ```glsl
+  int a = 123;
+  float b = float(a) * 0.1; 
+  ```
+
+### Constructors
+
+Same as casts, constructors also have the same name as their associated data types. A call to a constructor creates a value of the indicated data type and requires the correct number of initial values:
+
+  ```glsl
+  vec3 alpha = vec3(1.0, 2.0, 3.0);
+  vec4 beta = vec4(4.0, 5.0, 6.0, 7.0);
+
+  vec3 delta = vec3(alpha.xy, beta.w); // delta is now (1.0, 2.0, 7.0)
+  vec4 gamma = vec4(alpha[2], beta.rrr); // gamma is now (3.0, 4.0, 4.0, 4.0)
+  ```
+
+### Execution
+
+A shader program is composed of one or more functions. Its execution always begins with the `main` fucntion which receives no parameters and returns no value:
+
+  ```glsl
+  void main() {
+    ...
+  }
+  ```
+
+Custom functions must be defined first before they can be called. A function header defines its name, parameter list and data type of its return value:
+
+  ```glsl
+  vec3 customFunction(float x, bool beta) {
+    ...
+  }
+  ```
+
+All parameters are *pass by value* by default, but there are more parameter qualifiers available:
+
+  - `in`: *pass by value* - if the parameter's value is changed in the function, the actual parameter from the calling statement is unchanged
+  - `out`: *pass by reference* - the parameter is not initialized when the function is called, any changes in the parameter's value change the actual parameter from the calling statement
+  - `inout`: the parameter's value is initialized by the calling statement and any changes made by the function change the actual parameter from the calling statement
+
+  ```glsl
+  vec3 customFunction(in float x, in bool beta, inout int gamma, out int theta) {
+    ...
+  } 
+
+  vec3 phi = customFunction(3.5, true, delta, chi);
+  // At call:         3.5 is copied into x,
+  //                  true is copied into beta,
+  //                  delta is copied into gamma,
+  //                  chi is not copied into theta
+  // After the call:  the value of delta might be changed,
+  //                  the value of chi has changed,
+  //                  phi contains the returned value
+  ```
+
+### Conditional statements
+
+The classic conditional statements `if`, `else if`, `else` are available in GLSL. Its frequent usage is discouraged though, since it can reduce the ability to execute operations in parallel on 3D graphics processors. All of this is [dependent on hardware](https://stackoverflow.com/questions/37827216/do-conditional-statements-slow-down-shaders).
+
+### Iteration
+
+Repeating a group of statements can be done in multiple ways:
+
+  ```glsl
+  for (int j = 0; j < 5; j += 1) {
+    ...
+  }
+  ```
+
+  ```glsl
+  int j = 0;
+  while (j < 5) {
+    ...
+    j += 1;
+  }
+  ```
+
+  ```glsl
+  int j = 0;
+  do {
+    ...
+    j += 1;
+  } while (j < 5);
+  ```
+
+  If the loop control variable is declared in the loop, its scope is limited to the loop. There are many restrictions on the looping constructs:
+    
+  - There can be only one loop control variable of type int or float
+  - The initialization of the `for` statement must be of the form of `type-specifier identifier = constant-expression`
+  - The test for loop termination of the `for` statement must have the form of `loop_control_variable relational_operator constant_expression` where the operator is one of the following: `>`, `>=`, `<`, `<=`, `==`, `!=`
+  - The update of the loop control variable in the `for` statement must have the one of the following forms: `loop_control_variable++`. `loop_control_variable--`, `loop_control_variable += constant_expression`, `loop_control_variable -= constant_exoression`
+
+The flow of control inside a loop can be modified through:
+
+  - `break`: immediately terminates a loop and jumps to the first statement after the loop
+  - `continue`: skips any remaining statements in the loop and jumps to the next iteration in the loop
+  - `return`: immediately exits the current function, terminating the active loop
+
 
 ---
 
