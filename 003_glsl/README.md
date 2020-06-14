@@ -1,8 +1,10 @@
 # GLSL
 
-Being derived from OpenGL ES 3.0, WebGL uses the OpenGL shading language (GLSL) for vertex and fragment manipulation in the graphics pipeline. As stated in previous materials, WebGL requires a shader program (consisting of a vertex shader and a fragment shader) every time it is asked to draw something. The GLSL is different from WebGL's JavaScript API, in both its purpose and syntax, and therefore a separate section dedicated to it is appropriate.
+Being derived from OpenGL ES 3.0, WebGL uses the OpenGL shading language (GLSL) for vertex and fragment manipulation in the graphics pipeline. As stated in previous materials, WebGL requires a shader program (consisting of a vertex shader and a fragment shader) every time it is asked to draw something. The GLSL is different from WebGL's JavaScript API, in both its purpose and syntax, and therefore a separate section dedicated to it feels to be appropriate.
 
 It is also worth mentioning that there are different versions of OpenGL, WebGL and GLSL. In fact, WebGL uses OpenGL ES, which is a subset of OpenGL. The two languages are related but not directly compatible. Attention should also be paid to the version of WebGL, since 2.0 is [still being implemented](https://caniuse.com/#feat=webgl2) into some  browsers while 1.0 is already [widely supported](https://caniuse.com/#feat=webgl). The good news is that WebGL2 is nearly 100% backwards compatible with WebGL1. Therefore some older solutions to a problem can still be viable nowadays, eventhough it may not be the most efficient option at this point.
+
+The GLSL itself might not be the most exciting part of WebGL and because of that only basics will be explained in the following paragraphs. You can always refer to Khronos' official [WebGL2 reference card][L007] and learn more about GLSL on pages 6&7.
 
 ### Data types
 
@@ -245,6 +247,134 @@ The flow of control inside a loop can be modified through:
   - `continue`: skips any remaining statements in the loop and jumps to the next iteration in the loop
   - `return`: immediately exits the current function, terminating the active loop
 
+## Operators
+
+GLSL is designed for efficient vector and matrix processing. Most of its operators perform standard vector and matrix operations as defined in linear algebra. In cases where an operation is not defined in linear algebra, the operation is typically done component-wise, where the operation is performed on each element of the vector or matrix.
+
+As explained before, GLSL does not perform any automatic casting of data types. The user needs to make sure all of the operands in an expression are the same type.
+
+GLSL only supports square matrices. A vector is treaded as either a row or a column vector whenever it is multiplied by a matrix, whichever makes the operation valid. The user does not have to transpose a vector as he would in normal matrix algebra. 
+
+A list of GLSL operators available in precedence order:
+
+  - `b`: boolean (scalar)
+  - `i`: integer (scalar)
+  - `f`: float (scalar)
+  - `bv`: bvec2, bvec3, bvec4 (boolean vector)
+  - `iv`: ivec2, ivec3, ivec4 (integer vector)
+  - `v`: vec2, vec3, vec4 (floating point vector)
+  - `m`: mat2, mat3, mat4 (floating point matrix)
+
+| Order | Operator | Description | Examples | Type of operation |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | `()` | Grouping | `()` |  |
+| 2 | `[]` | Array subscription | `v[2]` |  |
+|  | `()` | Function call | `func()` |  |
+|  | `.` | Field selector, swizzle | `v.xyz` |  |
+|  | `++`, `--` | Postfix increment, decrement | `i++`, `f++`, `i--`, `f--` | Scalar |
+|  |  |  | `iv++`, `v++`, `m++`, `iv--`, `v--`, `m--` | Component-wise |
+| 3 | `++`, `--` | Prefix increment, decrement | `++i`, `++f`, `--i`, `--f` | Scalar |
+|  |  |  | `++iv`, `++v`, `++m`, `--iv`, `--v`, `--m` | Component-wise |
+|  | `+`, `-` | Unary positive, negative | `+i`, `+f`, `-i`, `-f` | Scalar |
+|  |  |  | `+iv`, `+v`, `+m`, `-iv`, `-v`, `-m` | Component-wise |
+|  | `!` | Boolean negation | `!b` | Boolean |
+| 4 | `*` | Multiplication | `i * i`, `f * f` | Scalar |
+|  |  |  | `v * v`, `iv * iv`, `i * iv`, `f * v`, `f * m` | Component-wise |
+|  |  |  | `v * m`, `m * v`, `m * m` | Linear algebra |
+|  | `/` | Division | `i / i`, `f / f` | Scalar |
+|  |  |  | `v / v`, `iv / iv`, `iv / i`, `v / f`, `m / f` | Component-wise |
+|  | `%` | *Modulus* |  | *-Not implemented-* |
+| 5 | `+`, `-` | Addition, subtraction | `i + i`, `f + f`, `i - i`, `f + f` | Scalar |
+|  |  |  | `iv + iv`, `v + v`, `m + m`, `iv - iv`, `v - v`, `m - m` | Component-wise |
+| *6* | `<<`, `>>` | *Bitwise shift* |  | *-Not implemented-* |
+| 7 | `<`, `>`, `<=`, `>=` | Less than, greater than, less than or equal to, greater than or equal to | `i < i`, `f < f`, ... | Boolean |
+| 8 | `==`, `!=` | Equality, not equality | `i == i`, `f == f`, `bv == bv`, `iv == iv`, `v == v`, `m == m`, ... | Boolean |
+| *9* | `&` | *Bitwise AND* |  | *-Not implemented-* |
+| *10* | `^` | *Bitwise EXCLUSIVE OR* |  | *-Not implemented-* |
+| *11* | `\|` | *Bitwise INCLUSIVE OR* |  | *-Not implemented-* |
+| 12 | `&&` | Logical AND | `b && b` | Boolean |
+| 13 | `^^` | Logical EXCLUSIVE OR | `b ^^ b` | Boolean |
+| 14 | `\|\|` | Logical INCLUSIVE OR | `b \|\| b` | Boolean |
+| 15 | `? :` | Selection | `b ? n : m` | Component-wise |
+| 16 | `=` | Assignment | `b = b` | Boolean |
+|  |  |  | `i = i`, `f = f` | Scalar |
+|  |  |  | `bv = bv`, `iv = iv`, `v = v` | Vector |
+|  |  |  | `m = m` | Matrix |
+|  | `+=`, `-=` | Addition, subtraction assignment | `i += i`, `f += f`, ... | Scalar |
+|  |  |  | `iv += iv`, `v += v`, `m += m`, ... | Component-wise |
+|  | `+=`, `/=` | Multiplication, division assignment | `i += i`, `f += f`, ... | Scalar |
+|  |  |  | `v *= v`, `iv *= iv`, `v *= f`, `iv *= i`, `m *= f` | Component-wise |
+| 17 | `,` | Sequence |  |  |
+
+### Built-in functions
+
+GLSL provides a list of built-in functions which would be too long to go over in here. You can find them all on pages 7&8 of [WebGL2 Reference Card][L007]. In brief it is worth mentioning though, that the majority of the functions only work on floating point scalars or vectors.
+
+### Built-in variables
+
+Shader programs communicate with the graphics pipeline using predefined input and output variables.
+
+A vertex shader has two outputs:
+
+  - `gl_Position`: a `vec4` position of a vertex in clip coordinates
+  - `gl_PointSize`: a float value of pixels to use to render a point, applied only to the rendering of single points, not vertices of lines and triangles
+
+Inputs to a fragment shader are following:
+
+  - `gl_FragCoord`: a `vec4` value that holds (x, y, z, w) value of the fragment
+    - This is the value of `gl_Position` after transformation by the viewport transofrm and the perspective divide
+  - `gl_FrontFacing`: a boolean value that is true if this fragment is part of a front-facing primitive
+    - This only applies to triangles, determined on whether its normal vector is pointing toward the camera
+  - `gl_PointCoord`: `vec2` value indicating the relative location of the fragment within the renedering of a point
+
+A WebGL fragment shader has one single output:
+
+  - `gl_FragColor`: a `vec4` RGBA value placed into color buffer for the fragment is is processing
+
+### Compiling
+
+GLSL programs are compiled using functionality in the WebGL API. If an error occurs during the compilation, it can be captured and displayed. It is important not to pollute the GPU memory with invalid or unused object since the GPU does not do automatic garbage collection. A shader should be therefore returned only if it is valid:
+
+```js
+const createShader = (gl, type, source) => {
+  const shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+
+  const success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+  if (success) {
+    return shader;
+  }
+
+  console.log(gl.getShaderInfoLog(shader));
+  gl.deleteShader(shader)
+};
+```
+
+### Linking
+
+Linking vertex and fragment shaders into a single program makes sure that both reference to the same global variables. Again, only valid objects should be returned:
+
+```js
+const createProgram = (gl, vertexShader, fragmentShader) => {
+  const program = gl.createProgram();
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
+
+  const success = gl.getProgramParameter(program, gl.LINK_STATUS);
+  if (success) {
+    return program;
+  }
+
+  console.log(gl.getProgramInfoLog(program));
+  gl.deleteProgram(program);
+};
+```
+
+### Automated programs
+
+Since shader programs are just strings of text before being compiled, it is possible to create shader programs on the fly. You can have a set of strings that define various shader commands and combine those in different ways to create a specific shader for a specific rendering situations. While this concept might be very powerful, it is also quite advanced and beyond scope of this material.
 
 ---
 
@@ -253,6 +383,7 @@ The flow of control inside a loop can be modified through:
 | :---   | :---  | :---  |
 | WebGL2 from WebGL1 | [Greggman][A001] | [Link][L001] |
 | WebGL Shader Language | [Dr. Wayne Brown][A006] | [Link][L006] |
+| WebGL2 Reference Card | [Khronos][A007] | [Link][L007] |
 
 
 <!-- Resource links -->
@@ -260,3 +391,5 @@ The flow of control inside a loop can be modified through:
 [A001]: https://github.com/greggman (Greggman)
 [L006]: http://learnwebgl.brown37.net/12_shader_language/glsl_introduction.html (WebGL Shader Language)
 [A006]: http://learnwebgl.brown37.net/acknowledgements/author.html (Dr. Wayne Brown)
+[L007]: https://www.khronos.org/files/webgl20-reference-guide.pdf (WebGL2 Reference Card) 
+[A007]: https://khronos.org (Khronos)
