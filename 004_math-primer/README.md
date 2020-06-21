@@ -53,6 +53,58 @@ Also note that the direction can be provided in form of a negative distance - in
 >
 > *Source: Custom*
 
+### Angles
+
+To further understand different systems for measuring angles, we are going to review various trigonometric functions on a unit circle - a circle of radius 1 unit that is centered on the origin of the coordinate plane. 
+
+Every point on the unit circle corresponds to a right triangle with vertices at the origin and the point on the unit circle. The right triangle has leg lengths that are equal to the absolute values of the `x` and `y` coordinates.
+
+> ![Unit circle](assets/unit-circle.png)
+>
+> ***Unit circle***
+>
+> *Source: Custom*
+
+This right triangle is then used to apply trigonometric relations:
+
+  - `sinα = opposite/hypotenuse = b/c`
+  - `consα = adjacent/hypotenuse = a/c`
+  - `tanα = opposite/ adjacent = b/a`
+
+Since the hypotenuse of the right triangle is always 1 unit long, the values of the `x`, `y` coordinates of a point on the circle are always equal to the cosine and sine of the angle α respectively.
+
+There are two different systems for measuring angles:
+
+  - degrees: a full revolution is `360°`
+  - radians: a full revolution is `2π rad`
+
+In radians (rad) we measure an angle by measuring the arc length of the unit circle. Since the arc length of a full unit circle is `2π`, its size in radians is arc length multiplied by the circumference `2π * 1 = 2π rad`. 
+
+Any other angle less than `360°` can be represented as some fraction of `2π`. For example, 1/4 of a unit circle is `360° * (1/4) = 90°` or `2π * (1/4) = π/2 rad`. An angle bigger than `360°` or `2π rad` is also similar to the full circle modulo.
+
+### Vectors
+
+A location tells us where something is in relationship to a reference. That's only a part of the whole picture though, since the orientation of the object can be equally important. Direction can be referenced in two ways:
+
+  - relative: directions are in relationship to an object's current location and orientation
+  - absolute: directions are relative to a fixed frame of reference 
+
+Similarly to a description of position, there are many ways to specify object's direction, including combinations of angles and distances or distances along reference lines. In fact, the standard representation for direction, vectors, use this latter method as well.
+
+A vector can be visually represented as a line with an arrow on one end, where the end with no arrow is called *tail* and the end with arrow is called *head*. It is then defined by the change along each line of reference to get from the tail to the head. To easier distinguish vectors from other elements we use angle brackets `<...>` to wrap its values. 
+
+> ![Vector](assets/vector.png)
+>
+> ***Vector***
+>
+> *Source: Custom*
+
+A vector defined by `<dx, dy>` values has no position, it represents an absolute direction relative to the fixed frame of reference, usually `x` and `y`-axis. Therefore two vectors can be identical even though they might be displayed on completely different coordinates. 
+
+Two properties can be read from every vector: a direction, which is indicated by the arrow at its head, and a distance, the length from the tail to the head. If a vector has a length of exactly 1 unit, it is called a unit vector. Typically vectors are converted to unit vectors in order to simplify mathematical calculations that manipulate them. It also makes the representation of a particular direction unique, which is called *normalizing*.
+
+To describe relative directions using a vector, a specific tail location is needed. Also note that vector's position cannot be moved, since it has no location in first place - it is always relative to something and has direction and distance only. 
+
 ---
 
 ## Resources
@@ -60,6 +112,7 @@ Also note that the direction can be provided in form of a negative distance - in
 | :---   | :---  | :---  |
 | Intuitive Math | [Sam Spilsbury][E001] | [Link][E001] |
 | Modeling Location | [Dr. Wayne Brown][A006] | [Link][L006] |
+| Basic Trigonometric Functions | [Brilliant][E004] | [Link][E003] |
 
 
 <!-- Resource links -->
@@ -69,3 +122,5 @@ Also note that the direction can be provided in form of a negative distance - in
 <!-- Extra links -->
 [E001]: https://www.intuitive-math.club/ (Intuitive Math)
 [E002]: https://github.com/smspillaz (Sam Spilsbury)
+[E003]: https://brilliant.org/wiki/basic-trigonometric-functions/ (Basic Trigonometric Functions)
+[E004]: https://brilliant.org (Brilliant)
