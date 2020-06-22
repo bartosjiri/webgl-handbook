@@ -99,11 +99,30 @@ A vector can be visually represented as a line with an arrow on one end, where t
 >
 > *Source: Custom*
 
-A vector defined by `<dx, dy>` values has no position, it represents an absolute direction relative to the fixed frame of reference, usually `x` and `y`-axis. Therefore two vectors can be identical even though they might be displayed on completely different coordinates. 
+A vector defined as `<Vx, Vy>` values has no position, it represents an absolute direction relative to the fixed frame of reference, usually `x` and `y`-axis. Therefore two vectors can be identical even though they might be displayed on completely different coordinates. 
 
-Two properties can be read from every vector: a direction, which is indicated by the arrow at its head, and a distance, the length from the tail to the head. If a vector has a length of exactly 1 unit, it is called a unit vector. Typically vectors are converted to unit vectors in order to simplify mathematical calculations that manipulate them. It also makes the representation of a particular direction unique, which is called *normalizing*.
+Two properties can be read from every vector: a direction, which is indicated by the arrow at its head, and a magnitude, the length from the tail to the head. If a vector has a length of exactly 1 unit, it is called a unit vector. Typically vectors are converted to unit vectors in order to simplify mathematical calculations that manipulate them. It also makes the representation of a particular direction unique, which is called *normalizing*.
 
-To describe relative directions using a vector, a specific tail location is needed. Also note that vector's position cannot be moved, since it has no location in first place - it is always relative to something and has direction and distance only. 
+To describe relative directions using a vector, a specific tail location is needed. Also note that vector's position cannot be moved, since it has no location in first place - it is always relative to something and has direction and magnitude only. 
+
+Not all operations on vectors are defined in the usual sense:
+
+  - `<Vx, Vy>`: 2D vector
+  - `\|<Vx, Vy>\|`: magnitude of 2D vector
+  - `v`: normalized vector
+  - `n`: scalar
+
+| Operation | Equation |
+| :--- | :--- |
+| Vector addition/subtraction | `<Vx, Vy, Vz> + <Wx, Wy, Wz> = <Vx+Wx, Vy+Wy, Vz+Wz>` |  |
+| Scalar multiplication/division | `n * <Vx, Vy, Vz> = <n*Vx, n*Vy, n*Vz>` |  |
+| Vector magnitude | `\|<Vx, Vy>\| = sqrt((Vx^2)+(Vy^2))` |  |
+| Vector normalization | `v = <Vx, Vy> / \|<Vx, Vy>\|` |  |
+| Vector multiplication - dot product | `<Vx, Vy> . <Wx, Wy> = \|<Vx, Vy>\| * \|<Wx, Wy>\| * cosα` |
+| Vector multiplication - cross product | `<Vx, Vy> x <Wx, Wy> = \|<Vx, Vy>\| * \|<Wx, Wy>\| * sinα` |
+
+An equation for vector multiplication does not provide enough information to fully understand it. While the dot product is a scalar, the cross product is a unit vector. A better explanation can be found in [this video](https://www.youtube.com/watch?v=E34CftP455k).
+
 
 ---
 
