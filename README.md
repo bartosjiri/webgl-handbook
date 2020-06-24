@@ -9,6 +9,7 @@ A collection of notes, resources, code snippets, experiments and mini-projects d
 | [001](001_webgl-introduction) | WebGL introduction | Learning about what WebGL is, understanding basics of how it works and creating first program. | [R001](#resources), [R002](#resources), [R003](#resources) |
 | [002](002_under-the-hood) | Under the hood | Discussing at a basic level of how WebGL and GPU communicate together and what they actually do | [R001](#resources), [R004](#resources), [R005](#resources), [R006](#resources) |
 | [003](003_glsl) | GLSL | Taking a closer look at the specification of OpenGL ES shading language | [R001](#resources), [R006](#resources), [R007](#resources) |
+| [004](004_math-primer) | Math primer | A brief refresh of some math principles used in WebGL | [R006](#resources) |
 
 
 ## Resources
@@ -23,6 +24,7 @@ List of learning resources I have used:
 | R005 | An intro to modern OpenGL | [Joe Groff][A005] | [Link][R005] |
 | R006 | Learn WebGL | [Dr. Wayne Brown][A006] | [Link][R006] |
 | R007 | WebGL2 Reference Card |  [Khronos][A007] | [Link][R007] 
+
 
 ## Disclaimer
 Some contents of this repository are a compilation of material from various publicly available sources. All such information and/or images may be copyrighted by their respective owners. Credit and link to the original content is always provided at the bottom of each section. If you find any uncited content or other discrepancy, please feel free to open an issue.
