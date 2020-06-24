@@ -123,6 +123,53 @@ Not all operations on vectors are defined in the usual sense:
 
 An equation for vector multiplication does not provide enough information to fully understand it. While the dot product is a scalar, the cross product is a unit vector. A better explanation can be found in [this video](https://www.youtube.com/watch?v=E34CftP455k).
 
+### Matrices
+
+A matrix is a data representation of linear equations or other elements, commonly wrapped in box brackets. The horizontal lines of entries are called *rows* and the vertical are *columns*. The size of a matrix is then defined by the number of rows and columns that it contains. Matrices can also represent vectors. If a matrix has a single row it's called *row vector*, if it has a single column it's called *column vector*. A matrix which has the same number of rows and columns is called *square matrix*.
+
+There won't be much explanation for matrix use in WebGL in this material yet, since it is focused more on math part itself and also there are some differences between regular and WebGL matrices.
+
+We are going to demonstrate a few of available matrix operations and transformations:
+
+- Addition/subtraction
+  - Matricies must have the same size
+
+  ```
+  A = [ a b c ]    B = [ 1 2 3 ]    A + B = [ a+1 b+2 c+3 ]
+      [ d e f ]        [ 4 5 6 ]            [ d+4 e+5 f+6 ]
+  ```
+
+- Scalar multiplication
+  ```
+  A = [ a b c ]    3 * A = [ 3*a 3*b 3*c ]
+      [ d e f ]            [ 3*d 3*e 3*f ]
+  ```
+
+- Matrix multiplication
+  - First matrix must have same number of columns as second matrix has rows
+  - Similar to dot product of vector multiplication
+  - A\*B is not equal to B\*A
+
+  ```
+  A = [ a b c ]    B = [ 1 2 ]    A * B = [ (a*1 + b*3 + c*5) (a*2 + b*4 + c*6) ]
+      [ d e f ]        [ 3 4 ]            [ (d*1 + e*3 + f*5) (d*2 + e*4 + f*6) ]
+                       [ 5 6 ]
+  ```
+
+- Vector scaling
+  - If entries on the diagonal are all 1s, the *identity matrix* transforms a vector into itself
+  ```
+      [ 1 0 0 ]        [ a ]            [ 1*a ]
+  A = [ 0 2 0 ]    v = [ b ]    A * v = [ 2*b ]
+      [ 0 0 3 ]        [ c ]            [ 3*c ]
+  ```
+
+- Matrix transposition
+  ```
+      [ a b c ]          [ a d g ] 
+  A = [ d e f ]    A^T = [ b e h ]
+      [ g h i ]          [ c f i ]
+  ```
 
 ---
 
