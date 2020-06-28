@@ -183,7 +183,7 @@ We are going to demonstrate a few of available matrix operations and transformat
 
 <!-- Resource links -->
 [L006]: http://learnwebgl.brown37.net/model_data/model_points.html (Modeling Location)
-[A006]: https://http://learnwebgl.brown37.net/acknowledgements/author.html (Dr. Wayne Brown)
+[A006]: http://learnwebgl.brown37.net/acknowledgements/author.html (Dr. Wayne Brown)
 
 <!-- Extra links -->
 [E001]: https://www.intuitive-math.club/ (Intuitive Math)
