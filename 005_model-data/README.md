@@ -19,7 +19,7 @@ To specify a unique location we use a coordinate system, which allows us to desc
 >
 > ***Right hand rule***
 >
-> *Source: [Design and Software International ](https://dsi-mfg.com/right-hand-rule/)*
+> *Source: [Design and Software International](https://dsi-mfg.com/right-hand-rule/)*
 
 WebGL describes a location in homogeneous coordinates, which is a 4-component value `(x, y, z, w)`. The first three values are distances along the axes of the coordinate system. The last value `w` is used for perspective calculations, which will be described later. When creating models in WebGL programs, it can sometimes save memory by storing and specifying only the values you care about and letting WebGL fill in the other values. This is especailly useful in 2D graphics rendering, where the `z` value is omitted and automatically set to zero. For normal 3D models, the program will store three floating point values for each point. The `w` component will not be stored and always set to `1.0`. 
 
@@ -47,9 +47,19 @@ Objects in space take on an infinite variety of shape and forms. An object might
 
 A triangle is the simplest geometric shape that defines an enclosed area, having an inside and an outside area. It is always planar, defining a flat surface and also dividing 3D space into three distinct regions. All 3 points lie in the plane defined by the triangle and also simultaneosly are on both sides of that plane. It is also always convex and impossible to be concave, which would be harder to render. These properties make the rendering process straightforward and fast, enabling realtime 3D graphics.
 
-While almost any 3 points in space can be used to define a traingle, there are two cases that must be looked out for. Three points that are on top of each other or along a line do not define an enclosed area or divide 3D space into 3 regions. These are called *degenerate cases* and cause the mathematics that manipulate the triangles to fail.
+While almost any 3 points in space can be used to define a triangle, there are two cases that must be looked out for. Three points that are on top of each other or along a line do not define an enclosed area or divide 3D space into 3 regions. These are called *degenerate cases* and cause the mathematics that manipulate the triangles to fail.
 
+The three points of a triangle define its edges or boundary line segments. Points where these segments intersect are called vertices. A tringle has a front side and a back side, also called *faces*, which are defined as the surface of a triangle that is enclosed within its edges. Only one face is visible to a viewer or camera at a time. The order of triangle's verices, called the *winding order*, is used to determine which side of a triangle is the front side. The winding order type is dependent on the given rendering engine - a counter-clockwise winding order is used in WebGL to determine the front face.
 
+> ![Triangle winding order](assets/triangle-winding-order.png)
+>
+> ***Triangle winding order***
+>
+> *Source: [Christoph Michel][E002]*
+
+The orientation of a triangle can be determined through a *normal vector* or just *normal*. It is a vector at right angle to every point inside the triangle, calculated by taking the vector cross product of any two edges of the traingle. There are two such vectors, one for each of triangle's faces, pointing in the exact opposite direction. To calculate the normal vector for the front face, we take the cross product of edge 1 (between vertices 1&2) and edge 2 (vertices 2&3) for in a counter-clockwise winding order.
+
+The normal vector can be calculated on the fly or calculated once and stored with the traingle's definition. If the normal is calculated as needed, the computing unit has to do operations every time the triangle is rendered. If the normal is stored with the triangle definition, more memory is required to store each triangle. The stored pre-calculated normal is always normalized to unit length to minimize calculation difficulty needed during repeated rendering. There is never a need to store both the front and back facing normal vectors since to get the second one we just need to multiply the vector with -1.
 
 ---
 
@@ -57,8 +67,13 @@ While almost any 3 points in space can be used to define a traingle, there are t
 | Title | Author | Link |
 | :---   | :---  | :---  |
 | Modeling Location | [Dr. Wayne Brown][A006] | [Link][L006] |
+| Understanding front faces - winding order and normals | [Christoph Michel][E002] | [Link][E001] |
 
 
 <!-- Resource links -->
 [L006]: http://learnwebgl.brown37.net/model_data/model_points.html (Modeling Location)
 [A006]: http://learnwebgl.brown37.net/acknowledgements/author.html (Dr. Wayne Brown)
+
+<!-- Extra links -->
+[E001]: https://cmichel.io/understanding-front-faces-winding-order-and-normals (Understanding front faces - winding order and normals)
+[E002]: https://cmichel.io/ (Christoph Michel)
