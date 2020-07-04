@@ -61,6 +61,28 @@ The orientation of a triangle can be determined through a *normal vector* or jus
 
 The normal vector can be calculated on the fly or calculated once and stored with the traingle's definition. If the normal is calculated as needed, the computing unit has to do operations every time the triangle is rendered. If the normal is stored with the triangle definition, more memory is required to store each triangle. The stored pre-calculated normal is always normalized to unit length to minimize calculation difficulty needed during repeated rendering. There is never a need to store both the front and back facing normal vectors since to get the second one we just need to multiply the vector with -1.
 
+The form of any 3D object can be approximated with a set of triangles called a *triangle mesh*. The precision of object's representation is based on the number of triangles used to model it. Use of a minimal number of triangles will result in a very rough approximation with fast rendering and low hardware requirements while use of many triangles will bring much more accurate model with longer rendering and higher hardware requirements.
+
+> ![Triangle mesh quality](assets/triangle-mesh-quality.png)
+>
+> ***Triangle mesh quality***
+>
+> *Source: [Dr. Wayne Brown][A006]*
+
+A triangle mesh defining a solid object will have only some of its triangles visible from particular point of view. If the density of the triangles is uniform over the entire surface of the object, then only half of a model's triangles will be visible at a time. To determine if a triangle is visible, calculate the angle between a vector pointing in the direction of the camera's view and a triangle's normal vector. If the angle is greater than 90 degrees, then the traingle's front face is oriented away from the camera and hidden by other triangles in the model that are facing towards the camera, if there are any. This test is called *face culling* and can potentially speed up the rendering process by a factor of two. It is also only available for models of solid objects that do completely enclose the interior of a model.
+
+In WebGL there are multiple ways to generate triangles from a set of vertices:
+
+  - `TRIANGLES`: Three vertices are needed for each triangle and each vertex is used for one triangle. Vertices that are used for more than one triangle must be repeated in the vertices array. Defining *n* triangles requires *3n* vertices.
+  - `TRIANGLE_STRIP`: After the initial three vertices, each additional vertex defines one more triangle. Defining *n* traingles requires *(n+2)* vertices.
+  - `TRIANGLE_FAN`: All traingles share the first vertex. After the frist two vertices, each new vertex creates one new triangle. Defining *n* traingles requires *(n+2)* vertices.
+
+Dividing a mesh into the most efficient groups of these types is a complex problem. A considerable amount of memory can be saved by using `TRIANGLE_STRIP` and `TRIANGLE_FAN`, but they are actually rarely used. 
+
+### Material
+
+Surface properties of an object define what we see, from color and transparency, through its structure and shape, to light refraction and reflection. All these properties are essentially a question of how light reflects off of a surface into the view point. The surface will interact in different ways to different light sources. As developers, we need to model the interaction between the surface properties of an object and the properties of the light sources. Compared to the real world where there are almost always multiple light sources, we typically only try to approximate this using simplified assumptions.
+
 ---
 
 ## Resources
