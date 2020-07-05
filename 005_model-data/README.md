@@ -79,9 +79,44 @@ In WebGL there are multiple ways to generate triangles from a set of vertices:
 
 Dividing a mesh into the most efficient groups of these types is a complex problem. A considerable amount of memory can be saved by using `TRIANGLE_STRIP` and `TRIANGLE_FAN`, but they are actually rarely used. 
 
-### Material
+### Material properties
 
 Surface properties of an object define what we see, from color and transparency, through its structure and shape, to light refraction and reflection. All these properties are essentially a question of how light reflects off of a surface into the view point. The surface will interact in different ways to different light sources. As developers, we need to model the interaction between the surface properties of an object and the properties of the light sources. Compared to the real world where there are almost always multiple light sources, we typically only try to approximate this using simplified assumptions.
+
+For devices reproducing images by using light, such as electronic monitors, color is modeled as a combination of red, green and blue base colors. In this case, the light is additive, meaning adding all three base color at full intensity will result in white light, and the absence of these colors produces black. This is called RGB color system. For devices reproducing images from reflected light, such as printed pages, color is modeled as a combination of cyan, magenta and yellow base colors. These pigments absorb certain wavelengths of light and essentially reflect red, green and blue light. This color system is called CMY, or CMYK with separate black pigment to get crisper black colors.
+
+WebGL programs typically use RGB format with floating point values in order to execute correctly in cross-platform environments. For example, `(0.45, 0.23, 0.89)` represents a color that has 45% red, 23% green and 89% blue. In total, this allows approximately for six hundred quintillion possible colors (that's a number six followed by 20 zeros). Of course, human eye can see much lower number of different variations of any particular shade of color. For most people, a 8-bit color depth provide a smooth progression of color.
+
+An opaque object reflects almost all of the light that strikes it while a transparent object allows some light to pass through it. The amount of transparency can vary based on a composition of the object. Modeling transparency is very difficult, so a very simple approach for transparency is to store a percentage of opaqueness with a color value called *alpha value*. The RGBA color system stores 3 values for RGB colors and one alpha value. For example, `(0.45, 0.23, 0.89, 0.75)` makes 25% of the light pass through the object, since it is mostly opaque. If the alpha value is omitted, WebGL assumes it to be 1.0 (fully opaque).
+
+The surface of real-world objects are rarely a solid color. To model many colors over a surface we *texture maps*. In mathematics, mapping is a function that converts a set of inputs into an output value. This can be either calculated from the inputs or looked up in a list of possible values. The output of a mapping is often a pattern, which is in computer graphics referenced as a texture map, allowing us to assign a different color to every pixel of a model face.
+
+There are two kinds of texture maps, procedural and image. A procedural texture map is a function that converts input values into a color using a calculation. The results of the calculation are used to select a color from a list or create a new one. For image texture maps, a color value is typically looked up in a table from an image template. Compared to procedural maps, which can be multidimensional, an image only provides a 2D array of color values. 
+
+Since images are always rectangles and WebGL only renders triangles, the program requires a location specifications. *Texture coordinates* declare which location in an image corresponds to a traingle's vertices. In order to be independent of object and image sizes, the locations are specified in percentages. Once the three defining vertices are mapped to corresponding locations in the image, the interior is calculated. It is important to assign coordinates that do not distort the image.
+
+> ![Image texture coordinates](assets/image-texture-coordinates.png)
+>
+> ***Image texture coordinates***
+>
+> *Source: [Dr. Wayne Brown][A006]*
+
+When modelling how light interacts with the surfaces of an object, one or more of the following things happen when light strikes it:
+
+  - The light reflects and goes off in a different direction based on the surface properties of the face
+  - The light is absorbed by the object and converted into energy which heats up the object over time
+  - The light travels through the object *(transparency)* and continues on at a different trajectory *(refraction)*
+  - The light enters the object, bounces inside the object and then leaves it at a different place than it hit *(subsurface scattering)*
+
+In the real world light comes from light sources, including sun, various lamps, spot light, fires and explosions. The characteristics of light changes based on its source, and our job is to model some of its basic properties:
+
+  - Position
+    - Directional: the light source is so far away that all light rays are basically traveling in the same direction
+    - Positional: the light source is inside the scene and angle of the light striking an object is based on their relative position
+  - Color
+  - Form: does the light travel in all directions or is it restricted to a specific direction
+
+Sometimes the source of the light in a scene is not entirely known, for example, objects in a dark room can be slightly visible, but you might not be sure if the light is coming from the moon, from a light in another room under a doorway etc. Light that is not coming directly from a light source and is just bouncing around in a scene is called *ambient light*. Ambient light illuminates every face of a model, therefore both the faces that get direct light and the faces hidden from direct light are illuminated with the same amout of ambient light. The amount of ambient light determines the overall light in a scene.
 
 ---
 
