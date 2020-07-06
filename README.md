@@ -10,6 +10,7 @@ A collection of notes, resources, code snippets, experiments and mini-projects d
 | [002](002_under-the-hood) | Under the hood | Discussing at a basic level of how WebGL and GPU communicate together and what they actually do | [R001](#resources), [R004](#resources), [R005](#resources), [R006](#resources) |
 | [003](003_glsl) | GLSL | Taking a closer look at the specification of OpenGL ES shading language | [R001](#resources), [R006](#resources), [R007](#resources) |
 | [004](004_math-primer) | Math primer | A brief refresh of some math principles used in WebGL | [R006](#resources) |
+| [005](005_model-data) | Model data | Defining WebGL's virtual world and model properties of each object in it | [R006](#resources) |
 
 
 ## Resources
